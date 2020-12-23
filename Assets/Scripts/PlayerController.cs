@@ -4,30 +4,32 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Transform Player;
-    public float speed;
+    private Rigidbody Player;
+    public float speed = 1000f;
     // Start is called before the first frame update
     void Start()
     {
-        Player = GetComponent <Transform> ();
+        Player = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        Vector3 pos = transform.position;
-
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey("w")) {
-            Player.Translate (new Vector3(0, 0, -speed) * Time.deltaTime);
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey("w"))
+        {
+            Player.AddForce(0, 0, speed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey("s")) {
-            Player.Translate (new Vector3(0, 0, speed) * Time.deltaTime);
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey("s"))
+        {
+            Player.AddForce(0, 0, -speed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey("d")) {
-            Player.Translate (new Vector3(speed, 0, 0) * Time.deltaTime);
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey("d"))
+        {
+            Player.AddForce(speed * Time.deltaTime, 0, 0);
         }
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey("a")) {
-            Player.Translate (new Vector3(-speed, 0, 0) * Time.deltaTime);
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey("a"))
+        {
+            Player.AddForce(-speed * Time.deltaTime, 0, 0);
         }
     }
 }
