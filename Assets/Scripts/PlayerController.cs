@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 1000f;
     private int score = 0;
     public int health = 5;
+    // public Text scoreText;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
             Player.AddForce(-speed * Time.deltaTime, 0, 0);
         }
     }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Pickup"))
@@ -59,5 +61,10 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log($"You win!");
         }
+    }
+
+    void SetScoreText()
+    {
+
     }
 }
