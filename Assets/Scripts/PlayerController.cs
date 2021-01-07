@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,11 +9,12 @@ public class PlayerController : MonoBehaviour
     public float speed = 1000f;
     private int score = 0;
     public int health = 5;
-    // public Text scoreText;
+    public Text scoreText;
     // Start is called before the first frame update
     void Start()
     {
         Player = GetComponent<Rigidbody>();
+        scoreText = GetComponent<Text>();
     }
 
     void Update()
@@ -65,6 +68,6 @@ public class PlayerController : MonoBehaviour
 
     void SetScoreText()
     {
-
+        // scoreText = $"Score: {score}";
     }
 }
