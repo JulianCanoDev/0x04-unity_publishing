@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Player = GetComponent<Rigidbody>();
-        scoreText = GetComponent<Text>();
     }
 
     void Update()
@@ -52,7 +51,8 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Pickup"))
         {
             score++;
-            Debug.Log($"Score: {score}");
+            // Debug.Log($"Score: {score}");
+            SetScoreText();
             Destroy(other.gameObject);
         }
         if (other.CompareTag("Trap"))
@@ -68,6 +68,6 @@ public class PlayerController : MonoBehaviour
 
     void SetScoreText()
     {
-        // scoreText = $"Score: {score}";
+        scoreText.text = $"Score: {score}";
     }
 }
